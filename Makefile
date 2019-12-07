@@ -1,7 +1,9 @@
-CC = gcc
-CFLAGS = -std=c11 -Wall -fmax-errors=10 -Wextra -lpthread -g
+obj-m += traverse.o
 
-objects = main.o
+KDIR = /lib/modules/$(shell uname -r)/build
 
-p1-2: $(objects)
-	$(CC) -o p1-2 $(objects)
+all:
+	$(MAKE) -C $(KDIR) M=$(PWD) modules
+
+clean:
+	$(MAKE) -C $(KDIR) M=$(PWD) clean
