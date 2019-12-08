@@ -1,0 +1,1 @@
+cmd_/home/fenghe/Desktop/traverse-all-processes/traverse.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T ./scripts/module-common.lds  --build-id  -o /home/fenghe/Desktop/traverse-all-processes/traverse.ko /home/fenghe/Desktop/traverse-all-processes/traverse.o /home/fenghe/Desktop/traverse-all-processes/traverse.mod.o ;  true
