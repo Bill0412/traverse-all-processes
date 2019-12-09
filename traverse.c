@@ -39,13 +39,8 @@ int init_module(void)
     struct task_struct *task;
     int count_each[15] = {0};
     int i;
+
     char states[] = "RSDTtXZPI";
-
-    char data[128];
-
-    char filename[] = "/home/fenghe/Desktop/traverse-all-processes/traverse_res.txt";
-
-    loff_t pos = 0;
 
     for_each_process(task)
     {
@@ -55,14 +50,12 @@ int init_module(void)
         write_file(filename, data, &pos);
     }
 
-    sprintf(data, "Total # of proceses: %d", count);
-    write_file(filename, data, &pos);
-    // printk("R\tS\tD\tT\tt\tX\tZ\tP\tI\n");
+    printk("Total # of proceses: %d", count);
+    // printk("RSD\tT\tt\tX\tZ\tP\tI\n");
 
     for(i = 0; i < 9; i++)
     {
-        sprintf(data, "%c: %d\n", states[i], count_each[i]);
-        write_file(filename, data, &pos);
+        printk("%c: %d", states[i], count_each[i]);
     }
 
     return 0;
