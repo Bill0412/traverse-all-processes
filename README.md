@@ -1,6 +1,6 @@
 # Traverse All Processes Kernel Module
 
-This Program is used to Traverse all the Processed on a Linux OS.
+This Program is used to Traverse all the Processes on a Linux OS.
 
 ## Output Content
 - The status of all the processes, in the format of: name [index] state parent, each occupies one line.
