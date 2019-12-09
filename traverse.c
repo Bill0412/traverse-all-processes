@@ -4,34 +4,6 @@
 #include <linux/module.h>
 #include <linux/syscalls.h>
 #include <linux/fcntl.h>
-#include <asm/uaccess.h>
-#include <linux/fs.h>
-#include <linux/init.h>
-#include <linux/uaccess.h>
-#include <linux/buffer_head.h>
-
-static void write_file(char *filename, char *data, loff_t* pos)
-{
-  struct file *file = NULL;
-  // loff_t pos = 0;
-  //int fd;
-
-  mm_segment_t old_fs = get_fs();
-  set_fs(get_ds());
-
-  file = filp_open(filename, O_WRONLY | O_CREAT | O_SYNC | O_APPEND, 0777);
-  // set_fs(old_fs);
-
-    if (file) {
-        vfs_write(file, data, strlen(data), pos);
-        //fput(file);
-    }
-    filp_close(file, NULL);
-
-  set_fs(old_fs);
-}
-
-
 
 int init_module(void)
 {
