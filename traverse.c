@@ -9,6 +9,7 @@ int init_module(void)
     struct task_struct *task;
     int count_each[15] = {0};
     int i;
+    char states[] = "RSDTXtZPI";
 
     for_each_process(task)
     {
@@ -18,11 +19,11 @@ int init_module(void)
     }
 
     printk("Total # of proceses: %d", count);
-    printk("R\tS\tD\tT\tt\tX\tZ\tP\tI\n");
+    // printk("RSD\tT\tt\tX\tZ\tP\tI\n");
 
     for(i = 0; i < 9; i++)
     {
-        printk("%d\t", count_each[i]);
+        printk("%c: %d", states[i], count_each[i]);
     }
     printk("\n");
 
