@@ -18,8 +18,7 @@ int init_module(void)
     {
         count++;
         count_each[task_state_index(task)]++;
-        sprintf(data, "%s [%d] %c %s\n",task->comm , task->pid, task_state_to_char(task), task->parent->comm);
-        write_file(filename, data, &pos);
+        printk("%s [%d] %c %s\n",task->comm , task->pid, task_state_to_char(task), task->parent->comm);
     }
 
     printk("Total # of proceses: %d", count);
